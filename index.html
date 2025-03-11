@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>平方根&立方根计算</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-family: sans-serif;
+    }
+    h2 {
+      margin-top: 50px;
+    }
+    .container {
+      display: inline-block;
+      margin-top: 20px;
+      text-align: left;
+    }
+    label, input, button {
+      font-size: 16px;
+    }
+    button {
+      margin-left: 10px;
+      padding: 5px 15px;
+      cursor: pointer;
+    }
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <h2>请输入文本......</h2>
+  <h2>人分初一1班</h2>
+  <div class="container">
+    <label for="xValue">请输入 x ：</label>
+    <input type="number" id="xValue" step="any" />
+    <button onclick="computeRoots()">计算</button>
+    <p id="result"></p>
+  </div>
+  <script>
+    function computeRoots() {
+      const x = parseFloat(document.getElementById('xValue').value);
+      if (isNaN(x)) {
+        document.getElementById('result').innerHTML = "请输入正确的数字！";
+        return;
+      }
+      const sqrtVal = Math.sqrt(x).toFixed(20);
+      const cbrtVal = Math.cbrt(x).toFixed(20);
+      const squareVal = (x * x).toFixed(20);
+      const cubeVal = (x * x * x).toFixed(20);
+      let output = 
+        "x = " + x + "<br>" +
+        "√x (平方根): " + sqrtVal + "<br>" +
+        "³√x (立方根): " + cbrtVal + "<br>" +
+        "x² (平方): " + squareVal + "<br>" +
+        "x³ (立方): " + cubeVal;
+      document.getElementById('result').innerHTML = output;
+    }
+  </script>
+</body>
+</html>
